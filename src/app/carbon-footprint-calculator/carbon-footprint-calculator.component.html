@@ -64,19 +64,33 @@
               </tr>
               <tr>
                 <th>Mês</th>
-                <td>
-                  <span style="font-size: large">{{ result.energyCO2 }}</span> <br />
-                  <span class="small"
-                    ><sub>kg CO<sub>2</sub></sub></span
-                  >
-                </td>
+                <span style="font-size: large" *ngIf="result.energyCO2 !== 0">
+                  {{ result.energyCO2 }}
+                </span>
+                <span style="font-size: large" *ngIf="result.energyCO2 === 0">
+                  --
+                </span>
+                <br />
+                <span class="small"
+                  ><sub>kg CO<sub>2</sub></sub></span
+                >
               </tr>
               <tr>
                 <th>Ano</th>
                 <td>
-                  <span style="font-size: large">{{ result.totalEnergyCO2 }}</span> <br />
-                  <span class="small"
-                    ><sub>kg CO<sub>2</sub></sub></span
+                  <span
+                    style="font-size: large"
+                    *ngIf="result.totalEnergyCO2 !== 0"
+                  >
+                    {{ result.totalEnergyCO2 }}</span
+                  >
+                  <span style="font-size: large" *ngIf="result.energyCO2 === 0">
+                    --
+                  </span>
+
+                  <br />
+                  <span class="small">
+                    <sub>kg CO<sub>2</sub></sub></span
                   >
                 </td>
               </tr>
@@ -91,7 +105,10 @@
             <ul>
               <li>Tome banho menos demorado</li>
               <li>Evite ligar as luzes durante o dia</li>
-              <li>Não se esqueça de apagar as luzes ao sair de algum cômodo da casa</li>
+              <li>
+                Não se esqueça de apagar as luzes ao sair de algum cômodo da
+                casa
+              </li>
               <li>Evite deixar a porta da geladeira aberta</li>
               <li>Cheque as borrachas de vedação da geladeira</li>
               <li>
@@ -113,19 +130,35 @@
               </tr>
               <tr>
                 <th>Mês</th>
-                <td>
-                  <span style="font-size: large">{{ result.gasCO2 }}</span> <br />
-                  <span class="small"
-                    ><sub>kg CO<sub>2</sub></sub></span
-                  >
-                </td>
+                <span style="font-size: large" *ngIf="result.gasCO2 !== 0">
+                  {{ result.gasCO2 }}
+                </span>
+                <span style="font-size: large" *ngIf="result.gasCO2 === 0">
+                  --
+                </span>
+                <br />
+                <span class="small"
+                  ><sub>kg CO<sub>2</sub></sub></span
+                >
               </tr>
               <tr>
                 <th>Ano</th>
                 <td>
-                  <span style="font-size: large">{{ result.totalGasCO2 }}</span> <br />
-                  <span class="small"
-                    ><sub>kg CO<sub>2</sub></sub></span
+                  <span
+                    style="font-size: large"
+                    *ngIf="result.totalGasCO2 !== 0"
+                  >
+                    {{ result.totalGasCO2 }}</span
+                  >
+                  <span
+                    style="font-size: large"
+                    *ngIf="result.totalGasCO2 === 0"
+                  >
+                    --
+                  </span>
+                  <br />
+                  <span class="small">
+                    <sub>kg CO<sub>2</sub></sub></span
                   >
                 </td>
               </tr>
