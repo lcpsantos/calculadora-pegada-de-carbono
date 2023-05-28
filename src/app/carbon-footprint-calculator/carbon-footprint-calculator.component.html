@@ -1,0 +1,182 @@
+<div class="container">
+  <div class="card highlight-card card-small">
+    <svg
+      id="leaf"
+      xmlns="http://www.w3.org/2000/svg"
+      width="90"
+      height="90"
+      viewBox="0 0 80 90"
+    >
+      <title>Leaf</title>
+      <path
+        d="M76.245,27.87C68.617,20.248,56.252,19.08,47.863,24.638,39.1,30.15,39.1,39.083,47.863,44.6,56.252,50.158,68.617,48.99,76.245,41.368c7.629-7.628,8.798-19.993,3.24-28.383C65.238,18.53,53.392,17.315,45,23.1,36.608,17.315,24.762,18.53,16.123,26.985,10.565,35.375,11.733,47.74,19.361,55.369c7.628,7.628,19.993,8.796,28.383,3.238,7.639,7.64,19.485,8.855,28.125,1.4C85.043,47.74,86.212,35.375,78.583,27.87,71.043,19.23,58.197,18.064,49.557,25.693Z"
+        transform="translate(-6.375 -7.5)"
+        fill="#4CAF50"
+      />
+    </svg>
+
+    <h1><span>CALCULE SUA PEGADA DE CARBONO</span></h1>
+  </div>
+
+  <div class="form-group" *ngIf="!showReport">
+    <label for="energyConsumption"
+      >Insira seu consumo MENSAL de energia elétrica em kWh
+    </label>
+    <input
+      id="energyConsumption"
+      type="number"
+      [(ngModel)]="energyConsumption"
+    />
+  </div>
+
+  <div class="form-group" *ngIf="!showReport">
+    <label for="gasConsumption"
+      >Insira seu consumo MENSAL de gás (botijão)
+    </label>
+    <input
+      id="gasConsumption"
+      step="0.5"
+      type="number"
+      [(ngModel)]="gasConsumption"
+    />
+  </div>
+
+  <div *ngIf="!showReport" style="display: flex">
+    <button (click)="calculateFootprint()">Calcular</button>
+  </div>
+
+  <div *ngIf="showReport">
+    <div class="result" *ngIf="result && showReport">
+      <h2>Relatório Resumo</h2>
+
+      <div *ngIf="showReport" style="display: flex">
+        <div
+          class="row"
+          style="flex: 1; border-right: 1px solid #ccc; padding-right: 10px"
+        >
+          <div class="column">
+            <table>
+              <tr>
+                <th>
+                  Emissão de <span class="small">CO<sub>2</sub></span> por
+                  consumo de energia elétrica
+                </th>
+              </tr>
+              <tr>
+                <th>Mês</th>
+                <td>
+                  {{ result.energyCO2 }} <br />
+                  <span class="small"
+                    ><sub>kg CO<sub>2</sub></sub></span
+                  >
+                </td>
+              </tr>
+              <tr>
+                <th>Ano</th>
+                <td>
+                  {{ result.totalEnergyCO2 }} <br />
+                  <span class="small"
+                    ><sub>kg CO<sub>2</sub></sub></span
+                  >
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="attention">
+            <p>
+              ATENÇÃO!!! Você pode ajudar a reduzir essa quantidade de CO2
+              tomando as seguintes atitudes:
+            </p>
+            <ul>
+              <li>Tome banho menos demorado</li>
+              <li>Evite ligar as luzes durante o dia</li>
+              <li>Não se esqueça de apagar as luzes ao sair de algum cômodo</li>
+              <li>Evite deixar a porta da geladeira aberta</li>
+              <li>Cheque as borrachas de vedação da geladeira</li>
+              <li>
+                Não utilize a máquina de lavar para uma quantidade pequena de
+                roupas
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="row" style="flex: 1; padding-left: 10px">
+          <div class="column">
+            <table>
+              <tr>
+                <th>
+                  Emissão de <span class="small">CO<sub>2</sub></span> por
+                  consumo de gás
+                </th>
+              </tr>
+              <tr>
+                <th>Mês</th>
+                <td>
+                  {{ result.gasCO2 }} <br />
+                  <span class="small"
+                    ><sub>kg CO<sub>2</sub></sub></span
+                  >
+                </td>
+              </tr>
+              <tr>
+                <th>Ano</th>
+                <td>
+                  {{ result.totalGasCO2 }} <br />
+                  <span class="small"
+                    ><sub>kg CO<sub>2</sub></sub></span
+                  >
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="attention">
+            <p>
+              ATENÇÃO!!! Você pode ajudar a reduzir essa quantidade de CO2
+              tomando as seguintes atitudes:
+            </p>
+            <ul>
+              <li>Mantenha as bocas do fogão sempre limpas</li>
+              <li>
+                De tempos em tempos, verifique se a mangueira do gás está
+                comvazamento
+              </li>
+              <li>
+                Use panela de pressão, quando possível, pois ela cozinha
+                alimentos em menos tempo
+              </li>
+              <li>
+                Tampe as panelas, pois elas aproveitam mais a chama e diminui a
+                dissipação de calor
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br />
+  <div *ngIf="showReport" style="display: flex">
+    <button (click)="reset()">Iniciar novo processo</button>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer></footer>
+
+<svg
+  id="clouds"
+  xmlns="http://www.w3.org/2000/svg"
+  width="2611.084"
+  height="485.677"
+  viewBox="0 0 2611.084 485.677"
+>
+  <title>Gray Clouds Background</title>
+  <path
+    id="Path_39"
+    data-name="Path 39"
+    d="M2379.709,863.793c10-93-77-171-168-149-52-114-225-105-264,15-75,3-140,59-152,133-30,2.83-66.725,9.829-93.5,26.25-26.771-16.421-63.5-23.42-93.5-26.25-12-74-77-130-152-133-39-120-212-129-264-15-54.084-13.075-106.753,9.173-138.488,48.9-31.734-39.726-84.4-61.974-138.487-48.9-52-114-225-105-264,15a162.027,162.027,0,0,0-103.147,43.044c-30.633-45.365-87.1-72.091-145.206-58.044-52-114-225-105-264,15-75,3-140,59-152,133-53,5-127,23-130,83-2,42,35,72,70,86,49,20,106,18,157,5a165.625,165.625,0,0,0,120,0c47,94,178,113,251,33,61.112,8.015,113.854-5.72,150.492-29.764a165.62,165.62,0,0,0,110.861-3.236c47,94,178,113,251,33,31.385,4.116,60.563,2.495,86.487-3.311,25.924,5.806,55.1,7.427,86.488,3.311,73,80,204,61,251-33a165.625,165.625,0,0,0,120,0c51,13,108,15,157-5a147.188,147.188,0,0,0,33.5-18.694,147.217,147.217,0,0,0,33.5,18.694c49,20,106,18,157,5a165.625,165.625,0,0,0,120,0c47,94,178,113,251,33C2446.709,1093.793,2554.709,922.793,2379.709,863.793Z"
+    transform="translate(142.69 -634.312)"
+    fill="#eee"
+  />
+</svg>
