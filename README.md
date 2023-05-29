@@ -1,5 +1,11 @@
 # CalculadoraPegadaDeCarbono
 
+![tela inicial](https://github.com/lcpsantos/calculadora-pegada-de-carbono/assets/46362260/2293c35a-c409-44bf-8253-e82d22e2c116)
+
+
+![image](https://github.com/lcpsantos/calculadora-pegada-de-carbono/assets/46362260/84218f89-698b-437f-9ec0-62fe76d8072e)
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.3.
 
 ## Development server
